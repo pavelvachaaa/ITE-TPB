@@ -6,3 +6,7 @@
 </p>
 
 Tento repozitář obsahuje zdrojové kódy k předmětu [Technologie pro Big Data](https://stag.tul.cz/ects/fakulty/FM/ITE/TPB).
+
+## Cvičení
+
+* Cvičení č.1 - [idnes.cz scraper](01_idnes_scraper/README.MD)
