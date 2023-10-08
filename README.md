@@ -9,4 +9,4 @@ Tento repozitář obsahuje zdrojové kódy k předmětu [Technologie pro Big Dat
 
 ## Cvičení
 
-* Cvičení č.1 - [idnes.cz scraper](01_idnes_scraper/README.MD)
+[01 - iDNES.cz zloděj](01_idnes_scraper/README.md)
