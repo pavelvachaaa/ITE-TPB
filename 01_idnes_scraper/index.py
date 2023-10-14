@@ -96,7 +96,7 @@ class IdnesScraper:
         print("Scraping of articles is done, no more urls in queue, Im shuting down")
 
 if __name__ == "__main__": 
-    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARTICLES)
+    scraper = IdnesScraper(redis_host='localhost', redis_port=6379, mode=ScraperMode.SCRAPE_ARTICLES)
     # scraper.clear()
     scraper.generate_archive()
     scraper.run()
