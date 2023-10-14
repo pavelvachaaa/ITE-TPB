@@ -44,12 +44,9 @@ class IdnesScraper:
                     continue
                 
                 url.replace('/foto', '')
-                url.strip()
         
                 print(f"[{thread_id}][{scrape_queue}] scrapes {url}")
-                
-                response = requests.get(url, timeout=10)
-
+                response = requests.get(str(url), timeout=10)
                 if (self.mode == ScraperMode.SCRAPE_ARTICLES):
                     article = parse_article(response.content)
                     success = data_store.save_article(article)

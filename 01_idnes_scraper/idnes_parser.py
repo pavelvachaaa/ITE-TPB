@@ -11,10 +11,14 @@ def parse_article( content: bytes) -> dict[str, any]:
         article_name_elem = soup.find('h1', itemprop="name headline")
         article_opener_elem = soup.find("div", class_="opener")
 
-        content_raw = soup.find("div", id="art-text").find_all("p")
-        article_content = ''.join(
-            [c.string for c in content_raw if c.string is not None])
+        content_container = soup.find("div", id="art-text")
 
+        if content_container:
+            content_raw = content_container.find_all("p")
+            article_content = ''.join([c.string for c in content_raw if c.string is not None])
+        else:
+            article_content = ""  # Handle the case where the content is not found
+            
         # Počet komentářů
         comment_count_raw = soup.find("a", id="moot-linkin")
         if comment_count_raw:
@@ -22,7 +26,6 @@ def parse_article( content: bytes) -> dict[str, any]:
 
         article_comment_count = int(re.search(
             r"\d+", comment_count_raw.string).group()) if comment_count_raw else 0
-
         # Meta tagy
         article_published_time = soup.find(
             "meta", {"property": "article:published_time"})
