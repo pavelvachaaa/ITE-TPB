@@ -13,7 +13,7 @@ class ScraperMode(Enum):
 
 class IdnesScraper:
 
-    def __init__(self, redis_host='localhost', redis_port=6379, num_of_threads=3, mode: ScraperMode = ScraperMode.SCRAPE_ARTICLES):
+    def __init__(self, redis_host='localhost', redis_port=6379, num_of_threads=5, mode: ScraperMode = ScraperMode.SCRAPE_ARTICLES):
         self.redis_host = os.getenv('REDIS_HOST', redis_host)
         self.redis_port = int(os.getenv('REDIS_PORT', redis_port))
         self.num_of_threads = int(os.getenv('NUM_OF_THREADS', num_of_threads))
@@ -44,6 +44,7 @@ class IdnesScraper:
                     continue
                 
                 url.replace('/foto', '')
+                url.strip()
         
                 print(f"[{thread_id}][{scrape_queue}] scrapes {url}")
                 
@@ -67,9 +68,12 @@ class IdnesScraper:
                 msg = f"[{thread_id}] Most likely im ddosing the server, setting timeout for 2 mins {str(e)}"
                 data_store = data_store.log_error(msg)
                 sleep(120)
+                continue
             except Exception as e:
                 msg = f"[{thread_id}] Exception occured at url {url} with error {str(e)}"
                 data_store = data_store.log_error(msg)
+                continue
+
 
     def generate_archive(self,start=1, end=40398):
         self.store.generate_archive_links(start, end)
@@ -90,14 +94,14 @@ class IdnesScraper:
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.num_of_threads) as executor:
             for _ in range(self.num_of_threads):
                 executor.submit(self.__process_urls)
-
+              
         executor.shutdown(wait=True)
 
         print("Scraping of articles is done, no more urls in queue, Im shuting down")
 
 if __name__ == "__main__": 
-    scraper = IdnesScraper(redis_host='localhost', redis_port=6379, mode=ScraperMode.SCRAPE_ARTICLES)
+    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARTICLES)
     # scraper.clear()
-    scraper.generate_archive()
+    #scraper.generate_archive()
     scraper.run()
     # scraper.dump_data()

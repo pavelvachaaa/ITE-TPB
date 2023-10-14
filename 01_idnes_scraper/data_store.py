@@ -36,7 +36,7 @@ class DataStore:
         """
         [queue] = {articles_queue, archive_queue}
         """
-        return self.__redis_client.brpoplpush(queue, self.working_queue, 5)
+        return self.__redis_client.brpoplpush(queue, self.working_queue, 10)
     
     def ack_scrape(self, url: str):
         self.__redis_client.lrem(self.working_queue, 0, url)
