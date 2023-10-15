@@ -2,9 +2,10 @@ import json
 import redis
 
 class DataStore:
-    def __init__(self, host = "localhost", port=6378, working_queue="working_queue", error_list="error_list", article_list = "data_idnes_articles", urls_list = "data_idnes_urls", articles_queue = "articles_queue", archive_queue="archive_queue"):
+    def __init__(self, host = "localhost", password="", port=6378, working_queue="working_queue", error_list="error_list", article_list = "data_idnes_articles", urls_list = "data_idnes_urls", articles_queue = "articles_queue", archive_queue="archive_queue"):
         self.host = host
         self.port = port
+        self.password = password
         self.working_queue = working_queue
         self.error_list = error_list
         self.article_list = article_list
@@ -14,23 +15,27 @@ class DataStore:
         self.__redis_client = self._create_redis_client()
 
     def _create_redis_client(self, db=0, charset="utf-8") -> redis.Redis:
-        return redis.Redis(host=self.host, port=self.port, db=db, charset=charset, decode_responses=True, single_connection_client=False)
+        return redis.Redis(host=self.host, port=self.port, db=db, charset=charset, password=self.password, decode_responses=True, single_connection_client=False)
 
     def save_article(self, article) -> int:
        return self.__redis_client.rpush(self.article_list, json.dumps(article))
     
     def save_urls(self, urls: list[str]):
         pipeline = self.__redis_client.pipeline()
-        
+
         for url in urls:
             pipeline.sadd(self.urls_list, url)
-            pipeline.rpush(self.articles_queue, url)
         
-        results = pipeline.execute()
-        
+        set_results = pipeline.execute()
+
+        pipeline = self.__redis_client.pipeline()
+
         for i, url in enumerate(urls):
-            if results[i] is None or results[i + 1] is None:
-                raise Exception(f"Error saving URL: {url}")
+            if set_results[i] == 1:  # Check if SADD added the URL successfully
+                pipeline.rpush(self.articles_queue, url)
+          
+
+        pipeline.execute()
 
     def get_url_to_scrape(self, queue: str) -> str:
         """

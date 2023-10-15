@@ -6,7 +6,12 @@ Pro uložení informací byl využit redis (ukládání mezivýsledků v přípa
 Redis můžete spustit pomocí příkazu:
 
 ```bash
-sudo docker run --rm --name some-redis -d  -p 6379:6379 -v ~/projects/scraper/data:/data redis redis-server --save 60 --loglevel warning
+sudo docker run --rm --name some-redis -d  -p 6379:6379 -v ~/projects/scraper/data:/data redis redis-server --save 60 1 --loglevel warning
+```
+
+verze s heslem
+```bash
+sudo docker run --rm --name some-redis -d -p 6379:6379 -v ~/projects/scraper/data:/data -v ~/projects/scraper/custom-redis.conf:/usr/local/etc/redis/redis.conf redis redis-server /usr/local/etc/redis/redis.conf --save 60 1 --loglevel warning
 ```
 
 `--save 60 1000` nám zajištuje to, že každých 60 sekund se to uloží persistentně na disk, pokud se změnil alespoň jeden klíč

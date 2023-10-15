@@ -13,12 +13,13 @@ class ScraperMode(Enum):
 
 class IdnesScraper:
 
-    def __init__(self, redis_host='localhost', redis_port=6379, num_of_threads=5, mode: ScraperMode = ScraperMode.SCRAPE_ARTICLES):
+    def __init__(self, redis_host='localhost', redis_port=6379, num_of_threads=5, mode: ScraperMode = ScraperMode.SCRAPE_ARTICLES, redis_pass=""):
         self.redis_host = os.getenv('REDIS_HOST', redis_host)
         self.redis_port = int(os.getenv('REDIS_PORT', redis_port))
+        self.redis_pass = os.getenv('REDIS_PASS',redis_pass)
         self.num_of_threads = int(os.getenv('NUM_OF_THREADS', num_of_threads))
         self.mode = ScraperMode(int(os.environ.get('SCRAPER_MODE', mode.value)))
-        self.store = DataStore(host=self.redis_host, port=self.redis_port)
+        self.store = DataStore(host=self.redis_host, port=self.redis_port, password=redis_pass)
 
     def __process_urls(self) -> None:
         """
@@ -26,7 +27,7 @@ class IdnesScraper:
         [returns] -> url a informaci, které failnuly
         """
         # Pro thread safety by každý thread měl mít svůj datastore
-        data_store = DataStore(host=self.redis_host, port=self.redis_port)
+        data_store = DataStore(host=self.redis_host, port=self.redis_port, password=self.redis_pass)
         thread_id = threading.get_ident()
 
         if (self.mode == ScraperMode.SCRAPE_ARTICLES):
@@ -97,8 +98,8 @@ class IdnesScraper:
         print("Scraping of articles is done, no more urls in queue, Im shuting down")
 
 if __name__ == "__main__": 
-    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARTICLES)
+    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARCHIVE_URLS, num_of_threads=8, redis_pass="")
     # scraper.clear()
-    #scraper.generate_archive()
+    scraper.generate_archive()
     scraper.run()
     # scraper.dump_data()
