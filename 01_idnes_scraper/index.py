@@ -19,7 +19,7 @@ class IdnesScraper:
         self.redis_pass = os.getenv('REDIS_PASS',redis_pass)
         self.num_of_threads = int(os.getenv('NUM_OF_THREADS', num_of_threads))
         self.mode = ScraperMode(int(os.environ.get('SCRAPER_MODE', mode.value)))
-        self.store = DataStore(host=self.redis_host, port=self.redis_port, password=redis_pass)
+        self.store = DataStore(host=self.redis_host, port=self.redis_port, password=self.redis_pass)
 
     def __process_urls(self) -> None:
         """
