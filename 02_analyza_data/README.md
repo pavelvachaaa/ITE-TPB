@@ -1,4 +1,4 @@
-# Cvičení 01 - Analýza dat z iDnes.cz scraperu
+# Cvičení 02 - Analýza dat z iDnes.cz scraperu
 
 Bylo zde využito knihovny `ijson`, kvůli velikosti nascrapovaných dat ( > 4GB). Díky této knihovně nemusíme nejdříve načíst celý JSON soubor do paměti, ale můžeme pracovat vždycky inkrementálně po částech.
 
