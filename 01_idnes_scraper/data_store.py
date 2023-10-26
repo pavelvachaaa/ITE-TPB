@@ -62,12 +62,13 @@ class DataStore:
     def clear(self) -> None:
         self.__redis_client.delete(*[self.working_queue, self.archive_queue, self.article_list, self.articles_queue, self.urls_list, self.error_list, "archive_generated"])
 
-    def dump_articles(self, batch_size = 2000, output_file="idnes_articles_data.json"):
+    def dump_articles(self, batch_size = 10000, output_file="idnes_articles_data.json"):
         list_length = self.__redis_client.llen(self.article_list)
 
         articles = []
         # Batch size, protože při velikosti dat například 1 GB už může být problém s přenosem dat.
         for i in range(0, list_length, batch_size):
+            print(f"Batch {i}")
             batch = self.__redis_client.lrange(self.article_list, i, i + batch_size - 1)
             for article in batch:
                 json_object = json.loads(article)

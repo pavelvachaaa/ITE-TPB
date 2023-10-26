@@ -41,6 +41,8 @@ class IdnesScraper:
             try:
                 # Načtení adresy ze scrape_queue a přesun do workinq_queue
                 url = data_store.get_url_to_scrape(queue=scrape_queue)
+                if url is None:
+                    continue
                 if "www.idnes.cz" not in url:
                     continue
                 
@@ -98,8 +100,8 @@ class IdnesScraper:
         print("Scraping of articles is done, no more urls in queue, Im shuting down")
 
 if __name__ == "__main__": 
-    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARCHIVE_URLS, num_of_threads=8, redis_pass="")
+    scraper = IdnesScraper(redis_host='20.109.19.66', redis_port=6379, mode=ScraperMode.SCRAPE_ARCHIVE_URLS, num_of_threads=8, redis_pass="Heslo123")
     # scraper.clear()
-    scraper.generate_archive()
-    scraper.run()
-    # scraper.dump_data()
+    #scraper.generate_archive()
+    #scraper.run()
+    scraper.dump_data()

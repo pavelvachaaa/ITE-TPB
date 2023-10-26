@@ -1,0 +1,100 @@
+Number of articles: 1432106
+Number of duplicites: 4902
+Oldest article: 1900-01-01T00:00:00
+Total number of comments: 83029924
+Total number of words: 366583827
+Most commented article: Newcastle v Dubnici rozhodl za šest minut with 1540976 comments
+Most illustrated article: Jak telefonoval Agent 007. Kompletní průvodce sérií with 455 photos
+Most words in article: Co musí umět každý objektiv, aby fotky stály za to. Podrobný průvodce with 15317 words
+Most words in article: Navštivte komtesininy zásnuby with 11 words
+Average length of word: 9.348438399948803
+==================================================================
+Top three articles with the most occurrences of 'covid':
+1: Mluvit o 30 % úmrtí na covid nedává smysl. Realita je horší než statistiky with 26 covid-19 occurrences
+2: Jak se „první vlna“ epidemie porovnává s druhou. A zaděláme si na třetí? with 22 covid-19 occurrences
+3: Covid zabíjel loni v 8 % případů a nebyl nejčastější příčinou smrti with 16 covid-19 occurrences
+=====================================================================
+Month with the most published articles: Březen with 126768 articles.
+Month with the least published articles: Prosinec with 106957 articles.
+============================================================
+Most common words in content with < 6 words:
+řekl: 458203
+korun: 406058
+roce: 379854
+let: 372084
+roku: 367650
+měl: 354274
+mu: 348667
+uvedl: 322214
+=====================================================
+Year: 2001, Number of Articles: 56706
+Year: 1999, Number of Articles: 15287
+Year: 2000, Number of Articles: 30172
+Year: 2002, Number of Articles: 52637
+Year: 2003, Number of Articles: 47758
+Year: 2004, Number of Articles: 49381
+Year: 2005, Number of Articles: 49071
+Year: 2006, Number of Articles: 48946
+Year: 2007, Number of Articles: 54780
+Year: 2008, Number of Articles: 58504
+Year: 2009, Number of Articles: 59629
+Year: 1900, Number of Articles: 1
+Year: 2010, Number of Articles: 61782
+Year: 2011, Number of Articles: 68270
+Year: 2012, Number of Articles: 63566
+Year: 2013, Number of Articles: 61797
+Year: 2014, Number of Articles: 62231
+Year: 2015, Number of Articles: 65977
+Year: 2016, Number of Articles: 71645
+Year: 2017, Number of Articles: 68750
+Year: 2018, Number of Articles: 68416
+Year: 2019, Number of Articles: 62550
+Year: 2020, Number of Articles: 63271
+Year: 2021, Number of Articles: 63392
+Year: 2022, Number of Articles: 61605
+Year: 2023, Number of Articles: 49017
+Year: 1915, Number of Articles: 1
+Year: 1998, Number of Articles: 3720
+Year: 1997, Number of Articles: 494
+=========================================================
+Number of unique categories: 39
+Category: Ona > Cestování, Number of Articles: 17441
+Category: Ona > Revue, Number of Articles: 46210
+Category: Zpravodajství, Number of Articles: 54460
+Category: Zpravodajství > Zpravodajství, Number of Articles: 100977
+Category: Zpravodajství > Domácí, Number of Articles: 132260
+Category: Sport, Number of Articles: 65077
+Category: Zpravodajství > Kultura, Number of Articles: 69941
+Category: Sport > Atletika, Number of Articles: 11111
+Category: Tech > Auto, Number of Articles: 20021
+Category: Tech > Bonusweb, Number of Articles: 78035
+Category: Sport > Fotbal, Number of Articles: 130200
+Category: Zpravodajství > Finance, Number of Articles: 20403
+Category: Sport > Tenis, Number of Articles: 21916
+Category: Zpravodajství > Ekonomika, Number of Articles: 79812
+Category: Tech > Mobil, Number of Articles: 44745
+Category: Sport > Hokej, Number of Articles: 87845
+Category: Sport > Motosport, Number of Articles: 11932
+Category: Tech > Technet, Number of Articles: 34845
+Category: Sport > Lyžování, Number of Articles: 12564
+Category: Ona > Bydlení, Number of Articles: 14596
+Category: Sport > Basket, Number of Articles: 34301
+Category: Ona > Vaření, Number of Articles: 2906
+Category: Ona > Zdraví, Number of Articles: 13270
+Category: Sport > Volejbal, Number of Articles: 14148
+Category: Ona > Vztahy, Number of Articles: 11722
+Category: Sport > Olympijské hry, Number of Articles: 11892
+Category: Sport > Cyklistika, Number of Articles: 12050
+Category: Sport > Golf, Number of Articles: 5407
+Category: Sport > Biatlon, Number of Articles: 3952
+Category: Ona > Móda, Number of Articles: 4151
+Category: Tech > Xman, Number of Articles: 7825
+Category: Zpravodajství > Kraje, Number of Articles: 216525
+Category: Ona > Hobby, Number of Articles: 11090
+Category: Ona > Jenproženy, Number of Articles: 17047
+Category: Ona, Number of Articles: 1684
+Category: Ona > Jenproholky, Number of Articles: 7302
+Category: Ostatní, Number of Articles: 2441
+Category: Zpravodajství> Kraje, Number of Articles: 1
+Category: ostatni, Number of Articles: 1
+PS C:\Projekty\ITE-TPB\02_analyza_data> 
