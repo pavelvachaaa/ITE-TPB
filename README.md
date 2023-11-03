@@ -11,3 +11,5 @@ Tento repozitář obsahuje zdrojové kódy k předmětu [Technologie pro Big Dat
 
 * [01 - iDNES.cz zloděj](01_idnes_scraper/README.md)
 * [02 - Analýza zlodějiny](02_analyza_data/README.md)
+* [03 - Vizualizace zlodějiny](03_visualize_data/README.md)
+* [04 - Taming big data with Apache Spark](04_apache_spark/README.md)
